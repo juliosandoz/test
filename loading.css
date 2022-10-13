@@ -7,7 +7,7 @@
   width: 100%;
   content: '';
   z-index: 1000;
-  background-color: #0c26a5;
+  background-color: rgb(255,255,255,0.50);
   border-color: lightgray;
   background-repeat: no-repeat;
   background-position: center;
@@ -22,7 +22,7 @@
   position: absolute;
   top: 72%;
   font-size: 2em;
-  color: black;
+  color: #0c26a5;
   width: 100%;
   text-align: center;
 }
