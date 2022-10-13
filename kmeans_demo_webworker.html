@@ -297,10 +297,16 @@ background-color="#0072B5"  >
 
   
     <script type="text/javascript">
-	if (document.referrer!=="https://juliosandoz.github.io/test/index.html"){
-	alert('Cheeky guy!');
-	document.body.style.display = "none";
-	throw new Error('Not loaded');
+	const whitelisted_referrals = [window.location.href, "https://juliosandoz.github.io/test/index.html"]
+	let granted = false;
+	for (var i = 0; i < whitelisted_referrals.length; i++){
+    		if (document.referrer===whitelisted_referrals[i]){
+			granted=true};
+	};
+	if (!granted){
+		alert('Cheeky guy!');
+		document.body.style.display = "none";
+		throw new Error('Not loaded');
 	};
 	
 	
