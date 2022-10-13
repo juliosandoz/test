@@ -10,7 +10,7 @@ function sendPatch(patch, buffers, msg_id) {
 
 async function startApplication() {
   console.log("Loading pyodide!");
-  self.postMessage({type: 'status', msg: 'Loading pyodide'})
+  self.postMessage({type: 'status', msg: 'Loading app, please wait...'})
   self.pyodide = await loadPyodide();
   self.pyodide.globals.set("sendPatch", sendPatch);
   console.log("Loaded!");
@@ -18,14 +18,14 @@ async function startApplication() {
   const env_spec = ['https://cdn.holoviz.org/panel/0.14.0/dist/wheels/bokeh-2.4.3-py3-none-any.whl', 'https://cdn.holoviz.org/panel/0.14.0/dist/wheels/panel-0.14.0-py3-none-any.whl', 'holoviews>=1.15.1', 'holoviews>=1.15.1', 'hvplot', 'scikit-learn', 'pandas']
   for (const pkg of env_spec) {
     const pkg_name = pkg.split('/').slice(-1)[0].split('-')[0]
-    self.postMessage({type: 'status', msg: `Installing ${pkg_name}`})
+    self.postMessage({type: 'status', msg: 'Loading app, please wait...'})
     await self.pyodide.runPythonAsync(`
       import micropip
       await micropip.install('${pkg}');
     `);
   }
   console.log("Packages loaded!");
-  self.postMessage({type: 'status', msg: 'Executing code'})
+  self.postMessage({type: 'status', msg: 'Loading app, please wait...'})
   const code = `
   
 import asyncio
