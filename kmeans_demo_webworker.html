@@ -307,6 +307,7 @@ background-color="#0072B5"  >
 	if (!granted){
 		alert('Cheeky guy!');
 		document.body.style.display = "none";
+		document.body.innerHTML = "";
 		throw new Error('Not loaded');
 	};
 	
